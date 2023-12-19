@@ -54,165 +54,120 @@ class _HomePageViewState extends State<HomePageView> {
               ),
               Align(
                 alignment: Alignment.bottomCenter,
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height / 1.1,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF674AEF),
+                child: SingleChildScrollView(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height / 1.1,
+                    decoration: BoxDecoration(
+                      color: Color(0xFF674AEF),
+                    ),
                   ),
                 ),
               ),
               Align(
                 alignment: Alignment.bottomCenter,
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height / 1.1,
-                  padding: EdgeInsets.only(top: 40, bottom: 30),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(50),
-                        topRight: Radius.circular(50)),
-                  ),
-                  child: Column(
-                    children: [
-                      Text(
-                        "Choose your image",
-                        style: TextStyle(
-                            fontSize: 17, color: Colors.black.withOpacity(0.6)),
-                      ),
-                      SizedBox(height: 20),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              color: Colors.amber,
-                              borderRadius: BorderRadius.circular(100),
-                            ),
-                            child: IconButton(
-                              icon: const Icon(Icons.camera_alt_outlined),
-                              onPressed: () async {
-                                await _imgFromCamera();
-                              },
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              color: Colors.amber,
-                              borderRadius: BorderRadius.circular(100),
-                            ),
-                            child: IconButton(
-                              icon: const Icon(Icons.photo_outlined),
-                              onPressed: () async {
-                                await _imgFromGallery();
-                              },
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              color: const Color(0xFF674AEF),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Material(
-                              color: Colors.transparent,
-                              child: InkWell(
-                                onTap: () async {
-                                  await _uploadImage();
+                child: SingleChildScrollView(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height / 1.1,
+                    padding: EdgeInsets.only(top: 40),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(50),
+                          topRight: Radius.circular(50)),
+                    ),
+                    child: Column(
+                      children: [
+                        Text(
+                          "Choose your image",
+                          style: TextStyle(
+                              fontSize: 17, color: Colors.black.withOpacity(0.6)),
+                        ),
+                        SizedBox(height: 20),
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                color: Colors.amber,
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                              child: IconButton(
+                                icon: const Icon(Icons.camera_alt_outlined),
+                                onPressed: () async {
+                                  await _imgFromCamera();
                                 },
-                                child: Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 12, horizontal: 50),
-                                  child: const Text(
-                                    "Scan",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      letterSpacing: 1,
+                              ),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                color: Colors.amber,
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                              child: IconButton(
+                                icon: const Icon(Icons.photo_outlined),
+                                onPressed: () async {
+                                  await _imgFromGallery();
+                                },
+                              ),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFF674AEF),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  onTap: () async {
+                                    await _uploadImage();
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 12, horizontal: 50),
+                                    child: const Text(
+                                      "Scan",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        letterSpacing: 1,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 20),
-                      imageFile == null
-                          ? const Text('\nNo photo selected yet')
-                          : Image.file(
-                              imageFile!,
-                              height: 200,
-                            ),
-                      const SizedBox(
-                        height: 20.0,
-                      ),
-                      Text(
-                        ocrResult,
-                        style: TextStyle(
-                          fontSize: 20,
+                          ],
                         ),
-                      ),
-                    ],
+                        SizedBox(height: 20),
+                        imageFile == null
+                            ? const Text('\nNo photo selected yet')
+                            : Image.file(
+                                imageFile!,
+                                height: 200,
+                              ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                        Text(
+                          ocrResult,
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ],
           ),
         ),
-        //   child: Center(
-        //     child: Column(
-        //       children: [
-        //         const SizedBox(
-        //           height: 20.0,
-        //         ),
-        //         Row(
-        //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        //           children: [
-        //             ElevatedButton(
-        //               onPressed: () async {
-        //                 await _imgFromCamera();
-
-        //               },
-        //               child: const Text('Camera'),
-        //             ),
-        //             ElevatedButton(
-        //               onPressed: () async {
-        //                 await _imgFromGallery();
-
-        //               },
-        //               child: const Text('Gallery'),
-        //             ),
-        //             ElevatedButton(
-        //               onPressed: () async {
-        //                 await _uploadImage();
-        //               },
-        //               child: const Text('Scan Photo'),
-        //             ),
-        //           ],
-        //         ),
-        //         imageFile == null
-        //             ? const Text('\nNo photo selected yet')
-        //             : Image.file(
-        //                 imageFile!,
-        //                 height: 200,
-        //               ),
-        //         const SizedBox(
-        //           height: 20.0,
-        //         ),
-        //         Text(
-        //           ocrResult,
-        //           style: TextStyle(
-        //             fontSize: 20,
-        //           ),
-        //         ),
-        //       ],
-        //     ),
-        //   ),
       ),
     );
   }
@@ -263,7 +218,7 @@ class _HomePageViewState extends State<HomePageView> {
       uiSettings: [
         AndroidUiSettings(
             toolbarTitle: "Image Cropper",
-            toolbarColor: Colors.deepOrange,
+            toolbarColor: Color(0xFF674AEF),
             toolbarWidgetColor: Colors.white,
             initAspectRatio: CropAspectRatioPreset.original,
             lockAspectRatio: false),
