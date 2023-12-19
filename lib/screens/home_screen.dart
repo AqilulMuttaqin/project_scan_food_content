@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:scan_kandungan_makanan/screens/home_screen.dart';
 
 class HomePageView extends StatefulWidget {
   const HomePageView({super.key});
